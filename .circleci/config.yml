@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    working_directory: ~/backend-challenge
+    steps:
+      - checkout
+      - run:
+          name: Compile
+          command: mvn compile --file pom.xml
+      - run:
+          name: Integration Test
+          command: mvn test --file pom.xml
+      - store_test_results:
+          path: target/surefire-reports
