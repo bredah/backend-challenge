@@ -10,14 +10,25 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.apache.commons.validator.routines.EmailValidator;
+import org.junit.Assert;
 import org.junit.Test;
 
 import api.BaseTest;
+import api.endpoints.Albums;
+import api.endpoints.Comments;
+import api.endpoints.Endpoints;
+import api.endpoints.Photos;
+import api.endpoints.Posts;
+import api.endpoints.Users;
+import api.model.Album;
+import api.model.Comment;
+import api.model.Photo;
+import api.model.Post;
 import api.model.User;
 
 public class UsersTest extends BaseTest {
 
-	final String path = "/users";
+	final String path = Endpoints.USERS.getPath();
 	
     @Test
     public void getAllUsers() {
@@ -236,4 +247,61 @@ public class UsersTest extends BaseTest {
         	.spec(getResponseSpec())
         	.body(matchesJsonSchemaInClasspath("schemaUsers.json"));
     }
+    
+    @Test
+    public void checkUserAlbums() {
+    	// Find the user
+    	User user = new User.Builder()
+    		.setName("Leanne Graham")
+    		.build();
+    	List<User> users = Users.find(user);
+    	Assert.assertEquals(users.size(), 1);
+    	// Find all album(s) from the user
+    	Album album = new Album.Builder()
+    			.setUserId(users.get(0).getId())
+    			.build();
+    	List<Album> albums = Albums.find(album);
+    	Assert.assertTrue(albums.size() > 0);    	
+    }
+    
+    @Test
+    public void checkUserPhotosFromAlbums() {
+    	// Find the user
+    	User user = new User.Builder()
+    		.setName("Leanne Graham")
+    		.build();
+    	List<User> users = Users.find(user);
+    	Assert.assertEquals(users.size(), 1);
+    	// Find all album(s) from the user
+    	Album albumBuilder = new Album.Builder()
+    			.setUserId(users.get(0).getId())
+    			.build();
+    	List<Album> albums = Albums.find(albumBuilder);
+    	Assert.assertTrue(albums.size() > 0);
+    	// Find all photo(s) from the album(s)
+    	for (Album album : albums) {
+    		Photo photoBuilder = new Photo.Builder()
+    				.setAlbumId(album.getId())
+    				.build();
+			List<Photo> photos = Photos.find(photoBuilder);
+			Assert.assertTrue(photos.size() > 0);
+		}
+    }
+    
+    @Test
+    public void checkUserPosts() {
+    	// Find the user
+    	User user = new User.Builder()
+    		.setName("Leanne Graham")
+    		.build();
+    	List<User> users = Users.find(user);
+    	Assert.assertEquals(users.size(), 1);
+    	// Find all post(s) from the user
+    	Post post = new Post.Builder()
+    			.setUserId(users.get(0).getId())
+    			.build();
+    	List<Post> posts = Posts.find(post);
+    	Assert.assertTrue(posts.size() > 0);	
+    }
+        
 }

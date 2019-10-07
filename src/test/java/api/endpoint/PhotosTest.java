@@ -13,18 +13,19 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.Test;
 
 import api.BaseTest;
+import api.endpoints.Endpoints;
 import api.model.Photo;
 
 public class PhotosTest extends BaseTest{
 
-	final String path = "/photos";
+	final String path = Endpoints.PHOTOS.getPath();
 	
     @Test
     public void getAllPhotos() {
         when()
             .get(path)
         .then()
-            .statusCode(200)
+        	.spec(getResponseSpec())
             .body("size", greaterThan(0));
     }
 
@@ -35,7 +36,7 @@ public class PhotosTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+			.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -46,7 +47,7 @@ public class PhotosTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+        	.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -57,7 +58,7 @@ public class PhotosTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     
@@ -68,8 +69,7 @@ public class PhotosTest extends BaseTest{
         .when()
         	.get(path)
         .then()
-            .assertThat()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -80,8 +80,7 @@ public class PhotosTest extends BaseTest{
         .when()
         	.get(path)
         .then()
-            .assertThat()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -92,8 +91,7 @@ public class PhotosTest extends BaseTest{
         .when()
         	.get(path)
         .then()
-            .assertThat()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     
@@ -104,7 +102,7 @@ public class PhotosTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -115,7 +113,7 @@ public class PhotosTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     
@@ -126,7 +124,7 @@ public class PhotosTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -137,7 +135,7 @@ public class PhotosTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     

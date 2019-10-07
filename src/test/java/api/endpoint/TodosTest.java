@@ -8,10 +8,11 @@ import static org.hamcrest.Matchers.greaterThan;
 import org.junit.Test;
 
 import api.BaseTest;
+import api.endpoints.Endpoints;
 
 public class TodosTest extends BaseTest {
 
-	final String path = "/todos";
+	final String path = Endpoints.TODOS.getPath();;
 
     @Test
     public void getAllTodos() {

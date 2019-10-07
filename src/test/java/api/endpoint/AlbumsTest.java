@@ -8,17 +8,18 @@ import static org.hamcrest.Matchers.greaterThan;
 import org.junit.Test;
 
 import api.BaseTest;
+import api.endpoints.Endpoints;
 
 public class AlbumsTest extends BaseTest {
 
-	final String path = "/albums";
+	final String path = Endpoints.ALBUMS.getPath();
 	
 	@Test
 	public void getAllComments() {
 		given()
 			.spec(getRequestSpec())
 		.when()
-			.get(path)
+			.get(Endpoints.ALBUMS.getPath())
 		.then()
 			.spec(getResponseSpec())
 			.body("size", greaterThan(0));

@@ -7,6 +7,47 @@ public class Comment {
 	private String email;
 	private String body;
 
+	public static class Builder {
+		private int id;
+		private int postId;
+		private String name;
+		private String email;
+
+		public Builder setId(int id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder setPostId(int postId) {
+			this.postId = postId;
+			return this;
+		}
+
+		public Builder setName(String name) {
+			this.name = name;
+			return this;
+		}
+
+		public Builder setEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		public Comment build() {
+			return new Comment(this);
+		}
+	}
+
+	public Comment() {
+	}
+
+	private Comment(Builder builder) {
+		this.id = builder.id;
+		this.postId = builder.postId;
+		this.name = builder.name;
+		this.email = builder.email;
+	}
+
 	public int getId() {
 		return id;
 	}

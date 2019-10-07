@@ -13,11 +13,12 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.Test;
 
 import api.BaseTest;
+import api.endpoints.Endpoints;
 import api.model.Comment;
 
 public class CommentsTest extends BaseTest {
 
-	final String path = "/comments";
+	final String path = Endpoints.COMMENTS.getPath();	
 	
     @Test
     public void getAllComments() {

@@ -9,17 +9,18 @@ import static org.hamcrest.Matchers.greaterThan;
 import org.junit.Test;
 
 import api.BaseTest;
+import api.endpoints.Endpoints;
 
 public class PostsTest extends BaseTest{
 
-	final String path = "/posts";
+	final String path = Endpoints.POSTS.getPath();
 	
     @Test
     public void getAllPosts() {
         when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", greaterThan(0));
     }
 
@@ -30,7 +31,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -41,7 +42,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     
@@ -52,7 +53,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     
@@ -63,7 +64,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", greaterThan(0));
     }
     
@@ -74,7 +75,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     
@@ -85,7 +86,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     
@@ -96,7 +97,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(1));
     }
     
@@ -107,7 +108,7 @@ public class PostsTest extends BaseTest{
         .when()
             .get(path)
         .then()
-            .statusCode(200)
+    		.spec(getResponseSpec())
             .body("size", equalTo(0));
     }
     

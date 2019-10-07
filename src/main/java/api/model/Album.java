@@ -1,25 +1,22 @@
 package api.model;
 
-public class Post {
-
+public class Album {
 	private int userId;
 	private int id;
 	private String title;
-	private String body;
 
 	public static class Builder {
 		private int userId;
 		private int id;
 		private String title;
-		private String body;
-
-		public Builder setUserId(int userId) {
-			this.userId = userId;
-			return this;
-		}
 
 		public Builder setId(int id) {
 			this.id = id;
+			return this;
+		}
+
+		public Builder setUserId(int userId) {
+			this.userId = userId;
 			return this;
 		}
 
@@ -28,26 +25,18 @@ public class Post {
 			return this;
 		}
 
-		public Builder setBody(String body) {
-			this.body = body;
-			return this;
+		public Album build() {
+			return new Album(this);
 		}
-
-		public Post build() {
-			return new Post(this);
-		}
-
 	}
 
-	public Post() {
-
+	public Album() {
 	}
 
-	private Post(Builder builder) {
+	private Album(Builder builder) {
 		this.userId = builder.userId;
 		this.id = builder.id;
 		this.title = builder.title;
-		this.body = builder.body;
 	}
 
 	public int getUserId() {
@@ -74,17 +63,9 @@ public class Post {
 		this.title = title;
 	}
 
-	public String getBody() {
-		return body;
-	}
-
-	public void setBody(String body) {
-		this.body = body;
-	}
-
 	@Override
 	public String toString() {
-		return "Post [userId=" + userId + ", id=" + id + ", title=" + title + ", body=" + body + "]";
+		return "Album [userId=" + userId + ", id=" + id + ", title=" + title + "]";
 	}
 
 }
