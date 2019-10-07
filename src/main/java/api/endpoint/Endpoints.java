@@ -1,4 +1,4 @@
-package api.endpoints;
+package api.endpoint;
 
 public enum Endpoints {
 	ALBUMS("/albums"),

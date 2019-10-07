@@ -9,7 +9,6 @@ import static org.hamcrest.Matchers.greaterThan;
 import org.junit.Test;
 
 import api.BaseTest;
-import api.endpoints.Endpoints;
 
 public class PostsTest extends BaseTest{
 

@@ -1,4 +1,4 @@
-package api.endpoints;
+package api.endpoint;
 
 import static io.restassured.RestAssured.given;
 

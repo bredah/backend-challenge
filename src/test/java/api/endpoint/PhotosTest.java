@@ -13,7 +13,6 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.Test;
 
 import api.BaseTest;
-import api.endpoints.Endpoints;
 import api.model.Photo;
 
 public class PhotosTest extends BaseTest{

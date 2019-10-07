@@ -14,14 +14,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import api.BaseTest;
-import api.endpoints.Albums;
-import api.endpoints.Comments;
-import api.endpoints.Endpoints;
-import api.endpoints.Photos;
-import api.endpoints.Posts;
-import api.endpoints.Users;
 import api.model.Album;
-import api.model.Comment;
 import api.model.Photo;
 import api.model.Post;
 import api.model.User;
